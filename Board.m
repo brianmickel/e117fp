@@ -94,30 +94,34 @@ classdef Board < handle
                     ghost{i,j}(ind) = 5;
                 end
             end
+            
+            % Assemble [map] tile-by-tile
+            
+            [wall_ind(:,1), wall_ind(:,2)] = find(walls == 1);
+            [hall_ind(:,1), hall_ind(:,2)] = find(walls == 0);
+            [food_ind(:,1), food_ind(:,2)] = find(foods == 1);
 
-            for i = 1:m
-                for j = 1:n
-                    if walls(i,j) == 1 %is wall
-                        map{i,j} = ones(10,10).*6;
-                    else %is hall
-                        map{i,j} = ones(10,10).*5;
-                        if foods(i,j) == 1 %is food
-                            map{i,j} = food;
-                        elseif numel(players>0) %if there exist players
-                            [r,~] = size(players);
-                            if ~isempty(players(1,1)) %if pacman is still extant
-                                % place PacMan
-                                map{players(1,1), players(1,2)} = pac{orient(1)};
-                            else
-                                notify(Board,'Death');
-                            end  
-                            for x = 2:r
-                                map{players(x,1),players(x,2)} = ghost{x,orient(x)};
-                            end
-                        end
-                    end
-                end
+            % Insert walls, halls, and food
+            for i = 1:length(wall_ind)
+                map{wall_ind(i,1), wall_ind(i,2)} = ones(10,10).*6;
             end
+            for i = 1:length(hall_ind)
+                map{hall_ind(i,1), hall_ind(i,2)} = ones(10,10).*5;
+            end
+            for i = 1:length(food_ind)
+                map{food_ind(i,1), food_ind(i,2)} = food;
+            end
+            
+            % Insert characters in the right orientation
+            
+            map{players(1,1), players(1,2)} = pac{orient(1)};
+            
+            [r,~] = size(players);
+            
+            for i = 2:r
+                map{players(i,1), players(i,2)} = ghost{i,orient(i)};
+            end
+
             obj.Map = map;
             %colormap(colmap);
             % image(cell2mat(map));
