@@ -78,15 +78,15 @@ classdef Directions
                 if actionVector(2) == 0
                     letter = 'Q';
                 elseif actionVector(2) == 1 %
-                    letter = 'S';
+                    letter = 'E';
                 elseif actionVector(2) == -1 %
-                    letter = 'N';
+                    letter = 'W';
                 end
                 
             elseif actionVector(1) == 1 %
                 
                 if actionVector(2) == 0
-                    letter = 'E';
+                    letter = 'S';
                     return
                 elseif actionVector(2) == 1 %
                     %not possible
@@ -96,7 +96,7 @@ classdef Directions
                 
             elseif actionVector(1) == -1 %
                 if actionVector(2) == 0
-                    letter = 'W';
+                    letter = 'N';
                     return
                 elseif actionVector(2) == 1 %
                     %not possible

@@ -54,8 +54,8 @@ classdef Board < handle
 
             pac{1} = temp_pac; %east
             pac{2} = pac{1}'; %south
-            pac{3}= pac{2}'; %west
-            pac{4} = pac{3}'; %north
+            pac{3}= fliplr(pac{1}); %west
+            pac{4} = flipud(pac{2}); %north
 
             % Food Template
 
@@ -74,18 +74,18 @@ classdef Board < handle
             temp_ghost(6,3:8) = 1;
             temp_ghost([7,8],[3,5,6,8]) = 1;
 
-            ghost{1,1} = temp_ghost_back + temp_ghost_eyes + temp_ghost.*3; %east (pink)
-            ghost{1,2} = ghost{1,1}'; %south
-            ghost{1,3} = rot90(ghost{1,2}); %west
-            ghost{1,4} = rot90(ghost{1,3}); %north
-            ghost{2,1} = temp_ghost_back + temp_ghost_eyes + temp_ghost.*1; %west (red)
-            ghost{2,2} = ghost{2,1}'; %south
-            ghost{2,3} = rot90(ghost{2,2}); %west
-            ghost{2,4} = rot90(ghost{2,3}); %north
-            ghost{3,1} = temp_ghost_back + temp_ghost_eyes + temp_ghost.*7; %west (silver)
-            ghost{3,2} = ghost{3,1}'; %south
-            ghost{3,3} = rot90(ghost{3,2}); %west
-            ghost{3,4} = rot90(ghost{3,3}); %north
+            ghost{1} = temp_ghost_back + temp_ghost_eyes + temp_ghost.*3; % (pink)
+%             ghost{1,2} = ghost{1,1}'; %south
+%             ghost{1,3} = rot90(ghost{1,2}); %west
+%             ghost{1,4} = rot90(ghost{1,3}); %north
+            ghost{2} = temp_ghost_back + temp_ghost_eyes + temp_ghost.*1; % (red)
+%             ghost{2,2} = ghost{2,1}'; %south
+%             ghost{2,3} = rot90(ghost{2,2}); %west
+%             ghost{2,4} = rot90(ghost{2,3}); %north
+            ghost{3} = temp_ghost_back + temp_ghost_eyes + temp_ghost.*7; % (silver)
+%             ghost{3,2} = ghost{3,1}'; %south
+%             ghost{3,3} = rot90(ghost{3,2}); %west
+%             ghost{3,4} = rot90(ghost{3,3}); %north
             
             [x,y] = size(ghost);
             for i = 1:x
@@ -113,13 +113,13 @@ classdef Board < handle
             end
             
             % Insert characters in the right orientation
-            
+            display(['orientation:',num2str(orient(1))]);
             map{players(1,1), players(1,2)} = pac{orient(1)};
             
             [r,~] = size(players);
             
             for i = 2:r
-                map{players(i,1), players(i,2)} = ghost{i,orient(i)};
+                map{players(i,1), players(i,2)} = ghost{i};
             end
 
             obj.Map = map;

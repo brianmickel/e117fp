@@ -107,6 +107,18 @@ classdef GameState < handle
             return
         end
         
+        function bool = checkIfGameOver(obj)
+            bool = false;
+            
+            % game ends with no food
+            if ~any(obj.foodLocBoolArray)
+                
+            end
+            % game ends with collision
+            coords = obj.agentPosition{1};
+            return
+        end
+        
     end
     
     methods (Static)
