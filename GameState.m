@@ -112,10 +112,16 @@ classdef GameState < handle
             
             % game ends with no food
             if ~any(obj.foodLocBoolArray)
-                
+                bool = true;
             end
             % game ends with collision
-            coords = obj.agentPosition{1};
+            coordsPac = obj.agentPosition{1};
+            coordsGho = obj.agentPosition{2};
+            dirPac = obj.agentDirection{1};
+            dirGho = obj.agentDirection{2};
+            if coordsPac(1) == coordsGho(1) && coordsPac(2) == coordsGho(2)
+                bool = true;
+            end
             return
         end
         

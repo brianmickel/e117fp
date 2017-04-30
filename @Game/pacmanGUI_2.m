@@ -25,7 +25,7 @@ function pacmanGUI_2(obj)
         'Position',[.1 .1 .8 .8]);
     colormap(colmap);
     image(cell2mat(obj.Map)) % display the game board
-
+    axis off;
     % Right panel #1
     % First right panel will display title, instructions, and button to continue onto the next window
     rightPanel = uipanel('Parent',obj.Figure,...

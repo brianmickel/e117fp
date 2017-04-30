@@ -56,7 +56,7 @@ classdef Game < handle
             pacmanGUI_2(obj);
             %
             pause(1);
-            q = 0;
+            %q = 0;
             % Main Control Loop For Game
             while ~obj.isGameOver
                 actions = {};
@@ -115,7 +115,7 @@ classdef Game < handle
                 
                 if obj.gameState.checkEat()
                     %update score
-                    %notify(obj.Figure,'Score')
+%                     notify(obj.Figure,'Score')
                     display('Score')
                     display(obj.gameState.score)
                 end
@@ -124,10 +124,10 @@ classdef Game < handle
                 display(obj.gameState.agentPosition{1})
                 display(obj.gameState.agentPosition{2})
                 
-                q = q + 1;
-                if q == 100
-                    obj.isGameOver = true;
-                end
+%                 q = q + 1;
+%                 if q == 100
+%                     obj.isGameOver = true;
+%                 end
             end
             
         end
