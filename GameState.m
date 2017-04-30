@@ -154,6 +154,7 @@ classdef GameState < handle
             newGameState.agentPosition{i} = gameState.agentPosition{i} + actions{i};
             newGameState.agentDirection{i} = Directions.actionToDir(actions{i});
             %update directions and such
+%             newGameState.agentDirection{i} = Directions.actionToDir(actions{i});
             
             %check if food eaten
             %check if collisions and such
