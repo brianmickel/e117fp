@@ -152,6 +152,8 @@ function pacmanGUI_2(obj)
                 newscore = obj.gameState.score;
                 set(scoreDisplay, 'String', newscore)
             end
+            
+            play(obj);
         end 
 
     end % end to @next_callback - first callback/nested function
