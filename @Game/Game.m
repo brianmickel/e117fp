@@ -15,6 +15,10 @@ classdef Game < handle
         moveHistory;
     end
     
+    events
+        UpdateScore
+    end
+    
     methods
         function obj = Game()
             obj.isGameOver = false;
@@ -116,7 +120,7 @@ classdef Game < handle
                 
                 if obj.gameState.checkEat()
                     %update score
-                    notify(obj.Figure,'UpdateScore')
+                    notify(obj,'UpdateScore')
                     display('Score')
                     display(obj.gameState.score)
                 end

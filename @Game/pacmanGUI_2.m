@@ -145,13 +145,11 @@ function pacmanGUI_2(obj)
                 'String','0');
             %                 'Callback', @score_callback);
             
-            addlistener(play_callback, 'UpdateScore', @score_callback);
+            addlistener(obj, 'UpdateScore', @score_callback);
             
             function score_callback (h,d)
                 % If notified of score change, collect updated score and set to variable 'newscore'
-                % 10 is a placeholder
-                % gameState.score
-                newscore = gameState.score;
+                newscore = obj.gameState.score;
                 set(scoreDisplay, 'String', newscore)
             end
         end 
