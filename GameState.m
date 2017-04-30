@@ -20,6 +20,7 @@ classdef GameState < handle
         isWallBoolArray;
         ghostPitLocBoolArray;
         score;
+        lastGameState;
         
     end
     
@@ -38,6 +39,7 @@ classdef GameState < handle
                 obj.agentPosition = varargin{2}.agentPosition;
                 obj.agentDirection = varargin{2}.agentDirection;
                 obj.score = varargin{2}.score;
+                obj.lastGameState = varargin{2};
             end
         end
         
@@ -122,11 +124,24 @@ classdef GameState < handle
             % game ends with collision
             coordsPac = obj.agentPosition{1};
             coordsGho = obj.agentPosition{2};
-            dirPac = obj.agentDirection{1};
-            dirGho = obj.agentDirection{2};
+            coordsPacPrev = obj.lastGameState.agentPosition{1};
+            coordsGhoPrev = obj.lastGameState.agentPosition{2};
+            
+            %same space
             if coordsPac(1) == coordsGho(1) && coordsPac(2) == coordsGho(2)
                 bool = true;
             end
+            
+            %switching places
+            if coordsPac(1) == coordsGhoPrev(1) && coordsPac(2) == coordsGhoPrev(2) 
+                % coordsPac == coordsPacPrev bc double refresh
+                %coordsGho(1) == coordsPacPrev(1) && coordsGho(2) == coordsPacPrev(2)
+                %not needed because gamestate
+                %updates twice pacman first then ghost  
+                bool = true;
+            end
+            
+            display(bool)
             return
         end
         

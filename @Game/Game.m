@@ -121,8 +121,13 @@ classdef Game < handle
                 if obj.gameState.checkEat()
                     %update score
                     notify(obj,'UpdateScore')
-                    display('Score')
-                    display(obj.gameState.score)
+%                     display('Score')
+%                     display(obj.gameState.score)
+                end
+                
+                if obj.gameState.checkIfGameOver()
+                    display('gameOver')
+                    obj.isGameOver = true;
                 end
                 %refreshdata(obj.Figure);
                 display('Positions')
