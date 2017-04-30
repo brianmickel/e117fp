@@ -100,9 +100,11 @@ classdef Game < handle
                 pause(.01);
                 %%%
                 
-                if obj.gameState.checkeat()
+                if obj.gameState.checkEat()
                     %update score
-                    notify(Game.Figure,'Score')
+                    %notify(obj.Figure,'Score')
+                    display('Score')
+                    display(obj.gameState.score)
                 end
                 %refreshdata(obj.Figure);
                 display('Positions')
