@@ -46,21 +46,21 @@ classdef GameState < handle
                                             1 0 0 0 0 0 0 0 0 0 0 0 0 0 1;
                                             1 0 1 1 1 0 1 1 1 0 1 0 1 0 1;
                                             1 0 1 0 1 0 1 0 1 0 1 0 1 0 1;
-                                            1 0 1 0 1 0 1 1 1 0 1 0 1 0 1;
+                                            1 0 1 0 0 0 1 1 1 0 1 0 1 0 1;
                                             1 0 1 0 1 0 1 0 1 0 1 0 0 0 1;
                                             1 0 1 1 1 0 1 0 1 0 1 1 1 0 1;
                                             1 0 0 0 0 0 0 0 0 0 0 0 0 0 1;
                                             1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]);
                                     
             obj.foodLocBoolArray = logical([0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-                                        0 1 1 1 1 1 1 1 1 1 1 1 1 1 0;
-                                        0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
-                                        0 1 0 0 0 1 0 1 0 1 0 1 0 1 0;
-                                        0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
-                                        0 1 0 0 0 1 0 1 0 1 0 1 1 1 0;
-                                        0 1 0 0 0 1 0 1 0 1 0 0 0 1 0;
-                                        0 1 1 1 1 1 1 1 1 1 1 1 1 1 0;
-                                        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]);
+                                            0 1 1 1 1 1 1 1 1 1 1 1 1 1 0;
+                                            0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
+                                            0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
+                                            0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
+                                            0 1 0 0 0 1 0 1 0 1 0 1 1 1 0;
+                                            0 1 0 0 0 1 0 1 0 1 0 0 0 1 0;
+                                            0 1 1 1 1 1 1 1 1 1 1 1 1 1 0;
+                                            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]);
                                     
             obj.ghostPitLocBoolArray = logical([0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
                                                 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
@@ -93,6 +93,11 @@ classdef GameState < handle
 %             display(vector(1));
 %             display(vector(2));
             bool = obj.isWallBoolArray(vector(1),vector(2));
+            return
+        end
+        
+        function bool = isGhostPit(obj,vector)
+            bool = obj.ghostPitLocBoolArray(vector(1),vector(2));
             return
         end
         

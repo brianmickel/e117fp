@@ -39,23 +39,23 @@ classdef Game < handle
         end
         
         function run(obj)
+%             %
+%                 charpos = [];
+%                 charpos(1,1) = obj.gameState.agentPosition{1}(1);
+%                 charpos(1,2) = obj.gameState.agentPosition{1}(2);
+%                 charpos(2,1) = obj.gameState.agentPosition{2}(1);
+%                 charpos(2,2) = obj.gameState.agentPosition{2}(2);
+%                 
+%                 %[East, South, West, North] = [1,2,3,4]
+%                 charors = [];
+%                 charors(1,1) = Directions.henryNumberMapFunc(obj.gameState.agentDirection{1});
+%                 charors(2,1) = Directions.henryNumberMapFunc(obj.gameState.agentDirection{2});
+%                 
+%             obj.Map = Board(obj.gameState.isWallBoolArray,charpos,...
+%                                charors,obj.gameState.foodLocBoolArray).Map;
+%             pacmanGUI_2(obj);
             %
-                charpos = [];
-                charpos(1,1) = obj.gameState.agentPosition{1}(1);
-                charpos(1,2) = obj.gameState.agentPosition{1}(2);
-                charpos(2,1) = obj.gameState.agentPosition{2}(1);
-                charpos(2,2) = obj.gameState.agentPosition{2}(2);
-                
-                %[East, South, West, North] = [1,2,3,4]
-                charors = [];
-                charors(1,1) = Directions.henryNumberMapFunc(obj.gameState.agentDirection{1});
-                charors(2,1) = Directions.henryNumberMapFunc(obj.gameState.agentDirection{2});
-                
-            obj.Map = Board(obj.gameState.isWallBoolArray,charpos,...
-                               charors,obj.gameState.foodLocBoolArray).Map;
-            pacmanGUI_2(obj);
-            %
-            pause(1);
+%             pause(1);
             %q = 0;
             % Main Control Loop For Game
             while ~obj.isGameOver
@@ -110,12 +110,13 @@ classdef Game < handle
                     'Position',[.1 .1 .8 .8]);
                 colormap(colmap);
                 image(cell2mat(obj.Map)) % display the game board
+                axis off;
                 pause(.01);
                 %%%
                 
                 if obj.gameState.checkEat()
                     %update score
-%                     notify(obj.Figure,'Score')
+                    notify(obj.Figure,'UpdateScore')
                     display('Score')
                     display(obj.gameState.score)
                 end
