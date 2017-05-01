@@ -1,14 +1,14 @@
 function generateCustomGame(obj)
     if strcmpi(obj.game.boardType,'E')
         obj.isWallBoolArray = logical([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1;
-                                    1,0,0,0,0,0,0,0,0,0,0,0,0,0,1;
-                                    1,0,1,1,0,1,1,0,1,1,0,1,1,0,1;
-                                    1,0,1,0,0,0,1,0,0,1,0,0,1,0,1;
-                                    1,0,1,1,1,0,1,0,1,1,0,1,1,0,1;
-                                    1,0,1,0,0,0,1,0,0,1,0,0,1,0,1;
-                                    1,0,1,1,1,0,1,1,0,1,1,0,1,0,1;
-                                    1,0,0,0,0,0,0,0,0,0,0,0,0,0,1;
-                                    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+                                        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1;
+                                        1,0,1,1,0,1,1,0,1,1,0,1,1,0,1;
+                                        1,0,1,0,0,0,1,0,0,1,0,0,1,0,1;
+                                        1,0,1,1,1,0,1,0,1,1,0,1,1,0,1;
+                                        1,0,1,0,0,0,1,0,0,1,0,0,1,0,1;
+                                        1,0,1,1,1,0,1,1,0,1,1,0,1,0,1;
+                                        1,0,0,0,0,0,0,0,0,0,0,0,0,0,1;
+                                        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
 
         obj.foodLocBoolArray = logical([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;
                                         0,1,1,1,1,1,1,1,1,1,1,1,1,1,0;
@@ -33,7 +33,7 @@ function generateCustomGame(obj)
         obj.isWallBoolArray = logical([1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
                                     1 0 0 0 0 0 0 0 0 0 0 0 0 0 1;
                                     1 0 1 1 1 0 1 1 1 0 1 0 1 0 1;
-                                    1 0 1 0 1 0 1 0 1 0 1 0 1 0 1;
+                                    1 0 1 0 1 0 1 0 1 0 1 0 0 0 1;
                                     1 0 1 0 0 0 1 1 1 0 1 0 1 0 1;
                                     1 0 1 0 1 0 1 0 1 0 1 0 0 0 1;
                                     1 0 1 1 1 0 1 0 1 0 1 1 1 0 1;
@@ -43,7 +43,7 @@ function generateCustomGame(obj)
         obj.foodLocBoolArray = logical([0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
                                         0 1 1 1 1 1 1 1 1 1 1 1 1 1 0;
                                         0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
-                                        0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
+                                        0 1 0 0 0 1 0 0 0 1 0 1 1 1 0;
                                         0 1 0 0 0 1 0 0 0 1 0 1 0 1 0;
                                         0 1 0 0 0 1 0 1 0 1 0 1 1 1 0;
                                         0 1 0 0 0 1 0 1 0 1 0 0 0 1 0;
@@ -67,12 +67,12 @@ function generateCustomGame(obj)
     obj.agentDirection = {};
     obj.agentPosition = {};
     
-    obj.agents{1} = Pacman();
-    obj.game.agents{1} = Pacman();
+    obj.agents{1} = SuperSmartPacman();
+    obj.game.agents{1} = SuperSmartPacman();
     if obj.game.numGhosts > 0
         for i = 1:obj.game.numGhosts
-            obj.agents{i+1} = Ghost(i+1);
-            obj.game.agents{i+1} = Ghost(i+1);
+            obj.agents{i+1} = SmarterSimpleGhost(i+1);
+            obj.game.agents{i+1} = SmarterSimpleGhost(i+1);
             obj.agentPosition{i+1} = ghostPotentialPos{i};
             obj.agentDirection{i+1} = ghostPotentialDir{i};
         end

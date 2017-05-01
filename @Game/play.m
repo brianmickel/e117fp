@@ -36,6 +36,10 @@ function play(obj)
         colormap(colmap);
         image(cell2mat(obj.Map)) % display the game board
         axis off;
+        %sound
+        [nom, nom_fs] = audioread('pacman_chomp.wav');
+        nom_sound = audioplayer(nom,nom_fs);
+        play(nom_sound);
         pause(.01);
         %%%
 
@@ -44,6 +48,11 @@ function play(obj)
         end
 
         if obj.gameState.checkIfGameOver()
+            %sound
+            [ded, ded_fs] = audioread('pacman_death.wav');
+            ded_sound = audioplayer(ded,ded_fs);
+            play(ded_sound);
+            pause(3.1);
             display('gameOver')
             obj.isGameOver = true;
         end

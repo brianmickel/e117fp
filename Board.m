@@ -114,10 +114,15 @@ classdef Board < handle
             
             % Assemble [map] tile-by-tile
             
+            ind_food = find(foods == 1);
+            
             [wall_ind(:,1), wall_ind(:,2)] = find(walls == 1);
             [hall_ind(:,1), hall_ind(:,2)] = find(walls == 0);
+            
+            if ~isempty(ind_food)
             [food_ind(:,1), food_ind(:,2)] = find(foods == 1);
-
+            end
+            
             % Insert walls, halls, and food
             for i = 1:length(wall_ind)
                 map{wall_ind(i,1), wall_ind(i,2)} = ones(10,10).*6;
@@ -125,8 +130,11 @@ classdef Board < handle
             for i = 1:length(hall_ind)
                 map{hall_ind(i,1), hall_ind(i,2)} = ones(10,10).*5;
             end
+            
+            if ~isempty(ind_food)
             for i = 1:length(food_ind)
                 map{food_ind(i,1), food_ind(i,2)} = food;
+            end
             end
             
             % Insert characters in the right orientation
