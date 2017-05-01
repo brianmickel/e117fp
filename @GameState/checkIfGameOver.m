@@ -6,28 +6,31 @@ function bool = checkIfGameOver(obj)
     if ~any(obj.foodLocBoolArray)
         bool = true;
     end
-    % game ends with collision
-    coordsPac = obj.agentPosition{1};
-    coordsGho = obj.agentPosition{2};
-    coordsPacPrev = obj.lastGameState.agentPosition{1};
-    coordsGhoPrev = obj.lastGameState.agentPosition{2};
     
-    dirPac = obj.agentDirection{1};
-    dirGho = obj.agentDirection{2};
+    for agentidx = 2:length(obj.agents)
+        % game ends with collision
+        coordsPac = obj.agentPosition{1};
+        coordsGho = obj.agentPosition{agentidx};
+        coordsPacPrev = obj.lastGameState.agentPosition{1};
+        coordsGhoPrev = obj.lastGameState.agentPosition{agentidx};
 
-    %same space
-    if coordsPac(1) == coordsGho(1) && coordsPac(2) == coordsGho(2)
-        bool = true;
-    end
+        dirPac = obj.agentDirection{1};
+        dirGho = obj.agentDirection{agentidx};
 
-    %switching places
-    if coordsPac(1) == coordsGhoPrev(1) && coordsPac(2) == coordsGhoPrev(2) &&...
-            dirPac == Directions.oppositeDir(dirGho)
-        % coordsPac == coordsPacPrev bc double refresh
-        %coordsGho(1) == coordsPacPrev(1) && coordsGho(2) == coordsPacPrev(2)
-        %not needed because gamestate
-        %updates twice pacman first then ghost  
-        bool = true;
+        %same space
+        if coordsPac(1) == coordsGho(1) && coordsPac(2) == coordsGho(2)
+            bool = true;
+        end
+
+        %switching places
+        if coordsPac(1) == coordsGhoPrev(1) && coordsPac(2) == coordsGhoPrev(2) &&...
+                dirPac == Directions.oppositeDir(dirGho)
+            % coordsPac == coordsPacPrev bc double refresh
+            %coordsGho(1) == coordsPacPrev(1) && coordsGho(2) == coordsPacPrev(2)
+            %not needed because gamestate
+            %updates twice pacman first then ghost  
+            bool = true;
+        end
     end
 
     display(bool)

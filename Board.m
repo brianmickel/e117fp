@@ -8,7 +8,7 @@ classdef Board < handle
     end
     
     methods
-        function obj = Board(wallpos,charpos,charor,foodpos)
+        function obj = Board(gameState)
             % Board class constructor (adapted from GenerateMap)
             %%GenerateMap: generates a new game board with walls, food items, and
             %%characters for each iteration of game
@@ -20,6 +20,21 @@ classdef Board < handle
             % board
             % charor: [Nx1] doubles array: orientation of characters
                 %[East, South, West, North] = [1,2,3,4]
+            %%%%%% GameState Object to ===> wallpos,charpos,charor,foodpos
+            wallpos = gameState.isWallBoolArray;
+            foodpos = gameState.foodLocBoolArray;
+
+            charpos = [];
+            charor = [];
+
+            for i = 1:length(gameState.agents)
+                %charpos
+                charpos(i,1) = gameState.agentPosition{i}(1);
+                charpos(i,2) = gameState.agentPosition{i}(2);
+                %charors
+                charor(i,1) = Directions.henryNumberMapFunc(gameState.agentDirection{1});
+            end
+            %%%%%%
             
             walls = wallpos;
             foods = foodpos;
