@@ -45,6 +45,7 @@ classdef GameState < handle
 
         bool = isWall(obj,vector)
         bool = isGhostPit(obj,vector)
+        bool = hasFood(obj,vector)
         generateInitialState(obj)
         bool = checkIfGameOver(obj)
         bool = checkEat(obj)

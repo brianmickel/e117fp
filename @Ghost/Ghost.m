@@ -1,9 +1,8 @@
-classdef Ghost
+classdef Ghost < Agent
     %UNTITLED3 Summary of this class goes here
     %   Detailed explanation goes here
     
     properties
-        agentIndex;
     end
     
     methods
