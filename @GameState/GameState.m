@@ -43,6 +43,12 @@ classdef GameState < handle
             end
         end
 
+        bool = isWall(obj,vector)
+        bool = isGhostPit(obj,vector)
+        generateInitialState(obj)
+        bool = checkIfGameOver(obj)
+        bool = checkEat(obj)
+        
     end
     
     methods (Static)

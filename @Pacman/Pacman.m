@@ -11,6 +11,10 @@ classdef Pacman
             obj.agentIndex = 1;
         end
         
+        userInput = getUserInput(obj)
+        legalDirections = getLegalDirections(obj, gameState)
+        action = getAction(obj, gameState)
+        
     end
     
 end

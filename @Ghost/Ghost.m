@@ -10,7 +10,8 @@ classdef Ghost
         function obj = Ghost(idx)
             obj.agentIndex = idx;
         end
-        
+        legalDirections = getLegalDirections(obj, gameState)
+        actionVector = getAction(obj, gameState)
     end
     
 end
