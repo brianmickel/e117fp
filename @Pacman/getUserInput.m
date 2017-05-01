@@ -1,4 +1,5 @@
 function userInput = getUserInput(obj)
+    display('Starting Listen')
     set(gcf,'doublebuffer','on');
     set(gcf,'KeyPressFcn','keydown=1;');
 
@@ -13,7 +14,7 @@ function userInput = getUserInput(obj)
         %     29 => rightArrow
         %     30 => upArrow
         %     31 => downArrow
-        if keydown==1 % a key was pressed
+        if keydown == 1 % a key was pressed
             display('Key pressed');
             keydown = 0;
             switch keyIn
@@ -40,4 +41,5 @@ function userInput = getUserInput(obj)
         end
         pause(0.05);
     end
+    display('Ending Listen');
 end

@@ -20,6 +20,8 @@ classdef Board < handle
             % board
             % charor: [Nx1] doubles array: orientation of characters
                 %[East, South, West, North] = [1,2,3,4]
+                
+                
             %%%%%% GameState Object to ===> wallpos,charpos,charor,foodpos
             wallpos = gameState.isWallBoolArray;
             foodpos = gameState.foodLocBoolArray;
