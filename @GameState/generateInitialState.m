@@ -1,5 +1,5 @@
 function generateInitialState(obj)
-    type = 2;
+    type = 1;
     switch type
         case 1
             % generates an initial state for the game
@@ -42,10 +42,10 @@ function generateInitialState(obj)
                 end
 
                 obj.agentPosition = {};
-                obj.agentPosition{1} = [2;2];
-                obj.agentPosition{2} = [5;6];
-                obj.agentPosition{3} = [8;14];
-                obj.agentPosition{4} = [8;2];
+                obj.agentPosition{1} = [2,2];
+                obj.agentPosition{2} = [5,6];
+                obj.agentPosition{3} = [8,14];
+                obj.agentPosition{4} = [8,2];
 
                 obj.agentDirection = {};
                 obj.agentDirection{1} = 'E';
@@ -95,9 +95,9 @@ function generateInitialState(obj)
                 end
 
                 obj.agentPosition = {};
-                obj.agentPosition{1} = [2;2];
-                obj.agentPosition{2} = [5;6];
-                obj.agentPosition{3} = [8;14];
+                obj.agentPosition{1} = [2,2];
+                obj.agentPosition{2} = [5,6];
+                obj.agentPosition{3} = [8,14];
 
 
                 obj.agentDirection = {};
@@ -147,10 +147,10 @@ function generateInitialState(obj)
                 end
 
                 obj.agentPosition = {};
-                obj.agentPosition{1} = [2;2];
-                obj.agentPosition{2} = [5;6];
-                obj.agentPosition{3} = [8;14];
-                obj.agentPosition{4} = [8;2];
+                obj.agentPosition{1} = [2,2];
+                obj.agentPosition{2} = [5,6];
+                obj.agentPosition{3} = [8,14];
+                obj.agentPosition{4} = [8,2];
 
                 obj.agentDirection = {};
                 obj.agentDirection{1} = 'E';

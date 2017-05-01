@@ -1,6 +1,7 @@
 function action = getAction(obj, gameState)
     legalDirections = obj.getLegalDirections(gameState);
-    userInput = obj.getUserInput();
+    %userInput = obj.getUserInput();
+    userInput = [];
     if isempty(userInput)
         %continue in same direction or Q
         if any(strcmpi(legalDirections,gameState.agentDirection(obj.agentIndex))) % current direction is possible
