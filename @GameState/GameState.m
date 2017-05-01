@@ -49,6 +49,7 @@ classdef GameState < handle
         generateInitialState(obj)
         bool = checkIfGameOver(obj)
         bool = checkEat(obj)
+        generateCustomGame(obj,map,numGhosts)
         
     end
     

@@ -21,7 +21,7 @@ classdef Game < handle
         
         initializeGame(obj)
         play(obj)
-        pacmanGUI_2(obj)
+        pacmanGUI_3(obj)
     end
    
     
