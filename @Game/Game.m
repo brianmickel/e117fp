@@ -43,7 +43,6 @@ classdef Game < handle
         end
         
             
-        end
     end
         
 %         function boolean = getProgress(obj)
