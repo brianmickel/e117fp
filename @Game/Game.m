@@ -40,22 +40,9 @@ classdef Game < handle
                 
             obj.Map = Board(wallpos,charpos,charor,foodpos).Map;
             pacmanGUI_2(obj); % intialized GUI
-        end
-        
-            
+        end    
     end
-        
-%         function boolean = getProgress(obj)
-%             if obj.isGameOver
-%                 int = 1;
-%                 return;
-%             else
-%                 int = obj.rules.getProgress(obj);
-%                 return;
-%             end
-%         end
-        
-        
+   
     
 end
 
