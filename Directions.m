@@ -55,6 +55,23 @@ classdef Directions
                 end
         end
         
+        
+        function dir = oppositeDir(letter)
+                if strcmpi(letter, 'N')
+                    dir = 'S';
+                    return
+                elseif strcmpi(letter, 'S')
+                    dir = 'N';
+                    return
+                elseif strcmpi(letter, 'E')
+                    dir = 'W';
+                    return
+                elseif strcmpi(letter, 'W')
+                    dir = 'E';
+                    return
+                end
+        end
+        
         function num = henryNumberMapFunc(letter)
                 if strcmpi(letter, 'N')
                     num = Directions.henryNumberMap.N;

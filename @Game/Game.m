@@ -7,12 +7,6 @@ classdef Game < handle
         gameState;
         Map; % colormap from Board class
         Figure;
-
-        
-        agentCrashedBoolean
-        display;
-        rules;
-        moveHistory;
     end
     
     events
@@ -27,6 +21,7 @@ classdef Game < handle
         
         initializeGame(obj)
         play(obj)
+        pacmanGUI_2(obj)
     end
    
     
