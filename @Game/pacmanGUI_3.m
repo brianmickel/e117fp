@@ -139,6 +139,12 @@ instructionsNext = uicontrol('Parent', instructionsPanel,...
                 return
             end % Up to here, the submit_callback function will not display the play button if either ghosts or board type is not selected
             
+            
+            obj.numGhosts = str2num(select_ghst(1));
+            obj.boardType = select_bd(2);
+            display(obj.numGhosts);
+            display(obj.boardType);
+            
             %% NEED TO INCLUDE CALLBACK ACTIONS FOR # GHOSTS AND BOARD TYPE
             % if string in ghostMenu = x ghosts, correspond with x number of
             % ghosts
@@ -179,8 +185,8 @@ instructionsNext = uicontrol('Parent', instructionsPanel,...
                     'String', 'End Game',...
                     'Units', 'normalized',...
                     'Position', [.35 .05 .5 .14],...
-                    'HorizontalAlignment','center');
-                %             'Callback', @end_callback);
+                    'HorizontalAlignment','center',...
+                            'Callback', @end_callback);
                 
                 addlistener(obj, 'UpdateScore', @score_callback);
                 
@@ -188,6 +194,10 @@ instructionsNext = uicontrol('Parent', instructionsPanel,...
                     % If notified of score change, collect updated score and set to variable 'newscore'
                     newscore = obj.gameState.score;
                     set(scoreDisplay, 'String', newscore)
+                end
+                
+                function end_callback(h,d)
+                    obj.isGameOver = true;
                 end
                 
                 play(obj);

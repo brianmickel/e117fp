@@ -7,6 +7,8 @@ classdef Game < handle
         gameState;
         Map; % colormap from Board class
         Figure;
+        numGhosts;
+        boardType;
     end
     
     events

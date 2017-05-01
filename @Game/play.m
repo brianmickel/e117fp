@@ -1,6 +1,7 @@
 function play(obj)
     % play the game!
     disp('Game Started!')
+    generateCustomGame(obj.gameState);
     % Main Control Loop For Game
     while ~obj.isGameOver
         actions = {};

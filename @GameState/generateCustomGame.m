@@ -1,5 +1,5 @@
-function generateCustomGame(obj,map,numGhosts)
-    if map == 'E 177'
+function generateCustomGame(obj)
+    if strcmpi(obj.game.boardType,'E')
         obj.isWallBoolArray = logical([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1;
                                     1,0,0,0,0,0,0,0,0,0,0,0,0,0,1;
                                     1,0,1,1,0,1,1,0,1,1,0,1,1,0,1;
@@ -29,7 +29,7 @@ function generateCustomGame(obj,map,numGhosts)
                                             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;
                                             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;
                                             0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
-    elseif map == 'Cal'
+    elseif strcmpi(obj.game.boardType,'C')
         obj.isWallBoolArray = logical([1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
                                     1 0 0 0 0 0 0 0 0 0 0 0 0 0 1;
                                     1 0 1 1 1 0 1 1 1 0 1 0 1 0 1;
@@ -60,24 +60,31 @@ function generateCustomGame(obj,map,numGhosts)
                                             0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
                                             0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]);
     end
-
+    ghostPotentialPos = {[5,4],[2,2],[8,2]};
+    ghostPotentialDir = {'N','S','E'};
+    
     obj.agents = {};
+    obj.agentDirection = {};
+    obj.agentPosition = {};
+    
     obj.agents{1} = Pacman();
     obj.game.agents{1} = Pacman();
-    if numGhosts > 0
-        for i = 1:numGhosts
+    if obj.game.numGhosts > 0
+        for i = 1:obj.game.numGhosts
             obj.agents{i+1} = Ghost(i+1);
             obj.game.agents{i+1} = Ghost(i+1);
+            obj.agentPosition{i+1} = ghostPotentialPos{i};
+            obj.agentDirection{i+1} = ghostPotentialDir{i};
         end
     end 
 
-    obj.agentPosition = {};
+    
     obj.agentPosition{1} = [8,8];
-    obj.agentPosition{2} = [5,4];
 
-    obj.agentDirection = {};
+
+    
     obj.agentDirection{1} = 'E';
-    obj.agentDirection{2} = 'N';
+
 
     obj.score = 0;
 
