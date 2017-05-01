@@ -1,4 +1,5 @@
-function generateInitialState(obj, type)
+function generateInitialState(obj)
+    type = 2;
     switch type
         case 1
             % generates an initial state for the game
@@ -85,25 +86,24 @@ function generateInitialState(obj, type)
                                                     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
                                                     0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]);
                 obj.agents = {};
-                obj.agents{1} = Pacman();
-                obj.game.agents{1} = Pacman();
+                obj.agents{1} = SmarterSimplePacman();
+                obj.game.agents{1} = SmarterSimplePacman();
 
-                for g = 2:4
-                    obj.agents{g} = Ghost(g);
-                    obj.game.agents{g} = Ghost(g); 
+                for g = 2:3
+                    obj.agents{g} = SmarterSimpleGhost(g);
+                    obj.game.agents{g} = SmarterSimpleGhost(g); 
                 end
 
                 obj.agentPosition = {};
                 obj.agentPosition{1} = [2;2];
                 obj.agentPosition{2} = [5;6];
                 obj.agentPosition{3} = [8;14];
-                obj.agentPosition{4} = [8;2];
+
 
                 obj.agentDirection = {};
                 obj.agentDirection{1} = 'E';
                 obj.agentDirection{2} = 'S';
                 obj.agentDirection{3} = 'N';
-                obj.agentDirection{4} = 'E';
 
                 obj.score = 0;
         otherwise
@@ -158,5 +158,6 @@ function generateInitialState(obj, type)
                 obj.agentDirection{3} = 'N';
                 obj.agentDirection{4} = 'E';
 
-                obj.score = 0;    end
+                obj.score = 0;
+    end
 end
