@@ -32,16 +32,23 @@ function generateInitialState(obj)
     obj.agents = {};
     obj.agents{1} = Pacman();
     obj.game.agents{1} = Pacman();
-    obj.agents{2} = Ghost(2);
-    obj.game.agents{2} = Ghost(2);  
+
+    for g = 2:4
+        obj.agents{g} = Ghost(g);
+        obj.game.agents{g} = Ghost(g); 
+    end
 
     obj.agentPosition = {};
     obj.agentPosition{1} = [2;2];
     obj.agentPosition{2} = [5;6];
+    obj.agentPosition{3} = [8;14];
+    obj.agentPosition{4} = [8;2];
 
     obj.agentDirection = {};
     obj.agentDirection{1} = 'E';
-    obj.agentDirection{2} = 'N';
+    obj.agentDirection{2} = 'S';
+    obj.agentDirection{3} = 'N';
+    obj.agentDirection{4} = 'E';
 
     obj.score = 0;
 end

@@ -32,7 +32,7 @@ classdef Board < handle
                 charpos(i,1) = gameState.agentPosition{i}(1);
                 charpos(i,2) = gameState.agentPosition{i}(2);
                 %charors
-                charor(i,1) = Directions.henryNumberMapFunc(gameState.agentDirection{1});
+                charor(i,1) = Directions.henryNumberMapFunc(gameState.agentDirection{i});
             end
             %%%%%%
             
@@ -133,8 +133,8 @@ classdef Board < handle
             
             [r,~] = size(players);
             
-            for i = 2:r
-                map{players(i,1), players(i,2)} = ghost{i};
+            for i = 1:r-1
+                map{players(i+1,1), players(i+1,2)} = ghost{i};
             end
 
             obj.Map = map;
