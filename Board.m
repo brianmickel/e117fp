@@ -131,10 +131,12 @@ classdef Board < handle
                 map{hall_ind(i,1), hall_ind(i,2)} = ones(10,10).*5;
             end
             
+            [f_r, ~] = size(food_ind);
+            
             if ~isempty(ind_food)
-            for i = 1:length(food_ind)
-                map{food_ind(i,1), food_ind(i,2)} = food;
-            end
+                for i = 1:f_r
+                    map{food_ind(i,1), food_ind(i,2)} = food;
+                end
             end
             
             % Insert characters in the right orientation

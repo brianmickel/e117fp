@@ -64,6 +64,7 @@ function generateCustomGame(obj)
     ghostPotentialDir = {'N','S','E'};
     
     obj.agents = {};
+    obj.game.agents = {};
     obj.agentDirection = {};
     obj.agentPosition = {};
     
